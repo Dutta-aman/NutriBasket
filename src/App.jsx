@@ -8,7 +8,6 @@ import Basket from "./screens/Basket";
 import Checkout from "./screens/Checkout";
 import PaymentSuccess from "./screens/PaymentSuccess";
 
-
 function App() {
 
   const [page, setPage] = useState("welcome");
@@ -17,35 +16,28 @@ function App() {
 
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-
   function addProduct(product) {
 
-    const existingProduct = basket.find(
+    const existing = basket.find(
       item => item.id === product.id
     );
 
+    if (existing) {
 
-    if (existingProduct) {
-
-      const updatedBasket = basket.map(item =>
+      const updated = basket.map(item =>
 
         item.id === product.id
-
           ? {
               ...item,
               quantity: (item.quantity || 1) + 1
             }
-
           : item
 
       );
 
+      setBasket(updated);
 
-      setBasket(updatedBasket);
-
-    }
-
-    else {
+    } else {
 
       setBasket([
         ...basket,
@@ -57,70 +49,68 @@ function App() {
 
     }
 
+    setPage("basket");
+
+  }
+
+  function updateQuantity(index, change) {
+
+    const updated = [...basket];
+
+    const currentQty = updated[index].quantity || 1;
+
+    const newQty = currentQty + change;
+
+    if (newQty <= 0) {
+
+      updated.splice(index, 1);
+
+    } else {
+
+      updated[index].quantity = newQty;
+
+    }
+
+    setBasket(updated);
+
+  }
+
+  function handleExit() {
+
+    setBasket([]);
+
+    setSelectedProduct(null);
 
     setPage("home");
 
   }
 
-
-
-  function removeProduct(index) {
-
-    const updatedBasket = basket.filter(
-      (_, i) => i !== index
-    );
-
-
-    setBasket(updatedBasket);
-
-  }
-
-
-
   if (page === "welcome") {
 
     return (
-
       <Welcome
-
         onStart={() => setPage("home")}
-
       />
-
     );
 
   }
-
-
 
   if (page === "home") {
 
     return (
-
       <Home
-
         basket={basket}
-
         onScan={() => setPage("scan")}
-
         onBasket={() => setPage("basket")}
-
-        onCheckout={() => setPage("checkout")}
-
       />
-
     );
 
   }
 
-
-
   if (page === "scan") {
 
     return (
-
       <ScanProduct
-
         onProduct={(id) => {
 
           setSelectedProduct(id);
@@ -128,85 +118,61 @@ function App() {
           setPage("product");
 
         }}
-
       />
-
     );
 
   }
-
-
 
   if (page === "product") {
 
     return (
-
       <ProductInfo
-
         productId={selectedProduct}
-
+        onBack={() => setPage("home")}
         onAdd={addProduct}
-
-        onBack={() => setPage("scan")}
-
       />
-
     );
 
   }
-
-
 
   if (page === "basket") {
 
     return (
-
       <Basket
-
         basket={basket}
-
         setBasket={setBasket}
-
-        removeProduct={removeProduct}
-
-        onCheckout={() => setPage("checkout")}
-
+        updateQuantity={updateQuantity}
         onContinue={() => setPage("home")}
-
+        onCheckout={() => setPage("checkout")}
       />
-
     );
 
   }
-
-
 
   if (page === "checkout") {
 
     return (
-
       <Checkout
-
         basket={basket}
-
         onPayment={() => setPage("success")}
-
       />
-
     );
 
   }
 
+  if (page === "success") {
 
+    return (
+      <PaymentSuccess
+        basket={basket}
+        onExit={handleExit}
+      />
+    );
 
-  return (
+  }
 
-    <PaymentSuccess />
-
-  );
-
+  return null;
 
 }
-
 
 export default App;

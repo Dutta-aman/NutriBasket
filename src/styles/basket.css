@@ -1,0 +1,245 @@
+.basket-container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#2563eb);
+}
+
+.basket-card{
+    width:950px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:28px;
+    padding:35px;
+    color:white;
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+.basket-card h1{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:30px;
+}
+
+.empty-box{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.empty-box h2{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.empty-box p{
+    opacity:.85;
+    margin-bottom:30px;
+}
+
+.basket-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(255,255,255,.08);
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:18px;
+    transition:.3s;
+}
+
+.basket-item:hover{
+    transform:translateY(-4px);
+    background:rgba(255,255,255,.14);
+}
+
+.basket-left{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.product-avatar{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:34px;
+    background:rgba(255,255,255,.15);
+}
+
+.basket-left h2{
+    margin-bottom:6px;
+}
+
+.basket-left p{
+    opacity:.85;
+    margin:4px 0;
+}
+
+.basket-right{
+    text-align:right;
+}
+
+.quantity-box{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+    margin-bottom:12px;
+}
+
+.qty-btn{
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:22px;
+    font-weight:bold;
+    background:white;
+    color:#2563eb;
+    transition:.25s;
+}
+
+.qty-btn:hover{
+    transform:scale(1.08);
+}
+
+.remove-btn{
+    margin-top:12px;
+    padding:10px 18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:#ef4444;
+    color:white;
+    font-weight:600;
+    transition:.25s;
+}
+
+.remove-btn:hover{
+    background:#dc2626;
+}
+
+.nutrition-summary{
+    margin-top:35px;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(255,255,255,.08);
+}
+
+.nutrition-summary h2{
+    margin-bottom:20px;
+}
+
+.nutrition-grid-2{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.nutrition-grid-2 div{
+    text-align:center;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(255,255,255,.10);
+}
+
+.nutrition-grid-2 h3{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.total-box{
+    margin-top:30px;
+    padding:22px;
+    border-radius:22px;
+    background:rgba(255,255,255,.12);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.total-box h1{
+    font-size:42px;
+}
+
+.basket-actions{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    gap:20px;
+}
+
+.start-btn,
+.secondary-btn{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:16px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.start-btn{
+    background:#22c55e;
+    color:white;
+}
+
+.start-btn:hover{
+    transform:translateY(-2px);
+    background:#16a34a;
+}
+
+.secondary-btn{
+    background:white;
+    color:#2563eb;
+}
+
+.secondary-btn:hover{
+    transform:translateY(-2px);
+}
+
+@media(max-width:900px){
+
+    .basket-card{
+        width:100%;
+        padding:25px;
+    }
+
+    .basket-item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .basket-right{
+        width:100%;
+        text-align:left;
+    }
+
+    .quantity-box{
+        justify-content:flex-start;
+    }
+
+    .nutrition-grid-2{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .basket-actions{
+        flex-direction:column;
+    }
+
+    .total-box{
+        flex-direction:column;
+        gap:12px;
+    }
+
+}

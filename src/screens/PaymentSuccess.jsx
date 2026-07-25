@@ -1,137 +1,96 @@
-import "./../styles/global.css";
+import "./../styles/payment.css";
 
+function PaymentSuccess({
+  basket,
+  onExit
+}) {
 
-function PaymentSuccess(){
+  const total = basket.reduce(
+    (sum, item) =>
+      sum + item.price * (item.quantity || 1),
+    0
+  );
 
+  const transactionId =
+    "NB" + Math.floor(Math.random() * 100000000);
+
+  const date = new Date().toLocaleString();
 
   return (
 
+    <div className="success-container">
 
-    <div className="checkout-container">
-
-
-
-      <div className="checkout-card success-card">
-
-
+      <div className="success-card">
 
         <div className="success-icon">
-
           ✅
-
         </div>
 
-
-
-
-
         <h1>
-
           Payment Successful
-
         </h1>
 
-
-
-
-
         <p>
-
-          Thank you for shopping with NutriBasket
-
+          Thank you for shopping with NutriBasket.
         </p>
-
-
-
-
-
 
         <div className="verification-box">
 
+          <div className="verification-row">
+            <span className="label">
+              Payment Status
+            </span>
 
+            <span className="value">
+              🟢 Verified
+            </span>
+          </div>
 
-          <p>
-            Payment Status
-          </p>
+          <div className="verification-row">
+            <span className="label">
+              Transaction ID
+            </span>
 
+            <span className="value">
+              {transactionId}
+            </span>
+          </div>
 
-          <h3>
-            🟢 Verified
-          </h3>
+          <div className="verification-row">
+            <span className="label">
+              Amount Paid
+            </span>
 
+            <span className="value">
+              ₹{total}
+            </span>
+          </div>
 
+          <div className="verification-row">
+            <span className="label">
+              Date & Time
+            </span>
 
-
-
-          <p>
-            Transaction ID
-          </p>
-
-
-          <h3>
-            NB20260723001
-          </h3>
-
-
-
-
-
-          <p>
-            Amount Paid
-          </p>
-
-
-          <h2>
-            ₹60
-          </h2>
-
-
-
-
-
-          <p>
-            Date & Time
-          </p>
-
-
-          <h3>
-            23 July 2026
-          </h3>
-
-
+            <span className="value">
+              {date}
+            </span>
+          </div>
 
         </div>
 
-
-
-
-
-
         <button
-
-          className="start-btn"
-
+          className="success-btn"
+          onClick={onExit}
         >
-
           ✔ Confirm & Exit
-
         </button>
-
-
-
 
       </div>
 
-
-
     </div>
-
 
   );
 
-
 }
-
-
 
 export default PaymentSuccess;

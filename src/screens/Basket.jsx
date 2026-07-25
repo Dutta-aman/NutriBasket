@@ -1,261 +1,200 @@
-import "./../styles/global.css";
-
+import "./../styles/basket.css";
 
 function Basket({
   basket,
   setBasket,
+  updateQuantity,
   onCheckout,
-  onContinue
+  onContinue,
 }) {
 
-
-
-  function removeItem(index){
-
-
-    const updatedBasket = basket.filter(
-      (_,i)=>i!==index
-    );
-
-
+  function removeItem(index) {
+    const updatedBasket = basket.filter((_, i) => i !== index);
     setBasket(updatedBasket);
-
-
   }
 
-
-
-
-
-  const total = basket.reduce(
-
-    (sum,item)=>
-
-      sum + (item.price * (item.quantity || 1)),
-
+  const totalAmount = basket.reduce(
+    (sum, item) => sum + item.price * item.quantity,
     0
-
   );
 
+  const totalCalories = basket.reduce(
+    (sum, item) => sum + item.calories * item.quantity,
+    0
+  );
 
+  const totalProtein = basket.reduce(
+    (sum, item) => sum + item.protein * item.quantity,
+    0
+  );
 
+  const totalCarbs = basket.reduce(
+    (sum, item) => sum + item.carbs * item.quantity,
+    0
+  );
 
+  const totalFat = basket.reduce(
+    (sum, item) => sum + item.fat * item.quantity,
+    0
+  );
 
   return (
-
     <div className="basket-container">
-
 
       <div className="basket-card">
 
+        <h1>🧺 My Basket</h1>
 
-        <h1>
-          🧺 My Basket
-        </h1>
+        {basket.length === 0 ? (
 
+          <div className="empty-box">
 
+            <h2>Your basket is empty</h2>
 
+            <p>Scan products to begin shopping.</p>
 
-        {
-          basket.length===0 ?
-
-
-          (
-
-            <div className="empty-box">
-
-              <h2>
-                Your basket is empty
-              </h2>
-
-
-              <p>
-                Scan products to add items
-              </p>
-
-
-              <button
-
-                className="start-btn"
-
-                onClick={onContinue}
-
-              >
-
-                📷 Start Scanning
-
-              </button>
-
-
-            </div>
-
-          )
-
-
-          :
-
-
-          basket.map((item,index)=>(
-
-
-            <div
-
-              className="basket-item"
-
-              key={index}
-
+            <button
+              className="start-btn"
+              onClick={onContinue}
             >
+              📷 Scan Products
+            </button>
 
+          </div>
 
-
-              <div>
-
-
-                <h2>
-                  {item.name}
-                </h2>
-
-
-                <p>
-                  Brand: {item.brand}
-                </p>
-
-
-                <p>
-                  Quantity: {item.quantity || 1}
-                </p>
-
-
-                <p>
-                  Calories: {item.calories * (item.quantity || 1)}
-                </p>
-
-
-              </div>
-
-
-
-
-
-              <div className="basket-right">
-
-
-                <h2>
-
-                  ₹{item.price * (item.quantity || 1)}
-
-                </h2>
-
-
-
-
-                <button
-
-                  className="remove-btn"
-
-                  onClick={()=>removeItem(index)}
-
-                >
-
-                  Remove
-
-                </button>
-
-
-              </div>
-
-
-
-            </div>
-
-
-          ))
-
-        }
-
-
-
-
-
-
-
-        {
-          basket.length>0 &&
-
+        ) : (
 
           <>
+            {basket.map((item, index) => (
 
+              <div
+                className="basket-item"
+                key={item.id}
+              >
 
-          <div className="total-box">
+                <div className="basket-left">
 
+                  <div className="product-avatar">
+                    🛒
+                  </div>
 
-            <h2>
-              Total Amount
-            </h2>
+                  <div>
 
+                    <h2>{item.name}</h2>
 
-            <h1>
-              ₹{total}
-            </h1>
+                    <p>{item.brand}</p>
 
+                    <p>
+                      ₹{item.price} × {item.quantity}
+                    </p>
 
-          </div>
+                  </div>
 
+                </div>
 
+                <div className="basket-right">
 
+                  <div className="quantity-box">
 
+                    <button
+                      className="qty-btn"
+                      onClick={() => updateQuantity(index, -1)}
+                    >
+                      −
+                    </button>
 
-          <div className="basket-actions">
+                    <span>{item.quantity}</span>
 
+                    <button
+                      className="qty-btn"
+                      onClick={() => updateQuantity(index, 1)}
+                    >
+                      +
+                    </button>
 
-            <button
+                  </div>
 
-              className="secondary-btn"
+                  <h3>
+                    ₹{item.price * item.quantity}
+                  </h3>
 
-              onClick={onContinue}
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeItem(index)}
+                  >
+                    Remove
+                  </button>
 
-            >
+                </div>
 
-              ← Continue Shopping
+              </div>
 
-            </button>
+            ))}
 
+            <div className="nutrition-summary">
 
+              <h2>🥗 Nutrition Summary</h2>
 
+              <div className="nutrition-grid-2">
 
-            <button
+                <div>
+                  <h3>{totalCalories}</h3>
+                  <span>Calories</span>
+                </div>
 
-              className="start-btn"
+                <div>
+                  <h3>{totalProtein.toFixed(1)} g</h3>
+                  <span>Protein</span>
+                </div>
 
-              onClick={onCheckout}
+                <div>
+                  <h3>{totalCarbs.toFixed(1)} g</h3>
+                  <span>Carbs</span>
+                </div>
 
-            >
+                <div>
+                  <h3>{totalFat.toFixed(1)} g</h3>
+                  <span>Fat</span>
+                </div>
 
-              💳 Proceed Checkout
+              </div>
 
-            </button>
+            </div>
 
+            <div className="total-box">
 
-          </div>
+              <h2>Total Amount</h2>
 
+              <h1>₹{totalAmount}</h1>
+
+            </div>
+
+            <div className="basket-actions">
+
+              <button
+                className="secondary-btn"
+                onClick={onContinue}
+              >
+                ← Continue Shopping
+              </button>
+
+              <button
+                className="start-btn"
+                onClick={onCheckout}
+              >
+                💳 Checkout
+              </button>
+
+            </div>
 
           </>
 
-
-        }
-
-
+        )}
 
       </div>
 
-
     </div>
-
-
   );
-
 }
-
-
 
 export default Basket;
