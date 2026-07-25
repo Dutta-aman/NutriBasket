@@ -9,7 +9,7 @@
 
   color:white;
 
-  background:#052e16;
+  background:#022C22;
 
   font-synthesis:none;
 
@@ -18,17 +18,21 @@
   -webkit-font-smoothing:antialiased;
 
 
-  --primary:#22c55e;
+  /* ===== Emerald Premium Theme ===== */
 
-  --primary-dark:#15803d;
+  --primary:#10B981;
 
-  --background:#052e16;
+  --primary-dark:#059669;
+
+  --background:#022C22;
 
   --card:rgba(255,255,255,0.12);
 
-  --border:rgba(255,255,255,0.2);
+  --border:rgba(255,255,255,0.22);
 
   --text-muted:rgba(255,255,255,0.75);
+
+  --accent:#34D399;
 
 }
 
@@ -66,8 +70,8 @@ body{
 
   radial-gradient(
     circle at top,
-    #166534,
-    #052e16 65%
+    #065F46,
+    #022C22 65%
   );
 
 }
@@ -158,7 +162,13 @@ body{
 
   font-size:60px;
 
-  background:rgba(255,255,255,.15);
+  background:
+
+  linear-gradient(
+    135deg,
+    #34D399,
+    #10B981
+  );
 
 }
 
@@ -222,12 +232,6 @@ body{
 
   border-radius:20px;
 
-  display:flex;
-
-  flex-direction:column;
-
-  gap:8px;
-
 }
 
 
@@ -251,9 +255,6 @@ body{
   margin:25px 0;
 
 }
-
-
-
 /* ================= Buttons ================= */
 
 
@@ -305,7 +306,7 @@ body{
 
   border-radius:50px;
 
-  border:1px solid white;
+  border:1px solid rgba(255,255,255,.6);
 
   background:transparent;
 
@@ -379,6 +380,8 @@ body{
 .dashboard-card:hover{
 
   transform:translateY(-6px);
+
+  background:rgba(255,255,255,.18);
 
 }
 
@@ -457,7 +460,7 @@ body{
 
   height:3px;
 
-  background:#22c55e;
+  background:var(--accent);
 
   animation:scan 2s infinite linear;
 
@@ -530,9 +533,6 @@ body{
   text-align:center;
 
 }
-
-
-
 /* ================= Basket ================= */
 
 
@@ -541,6 +541,8 @@ body{
   display:flex;
 
   justify-content:space-between;
+
+  align-items:center;
 
   padding:20px;
 
@@ -556,7 +558,7 @@ body{
 
 .remove-btn{
 
-  background:#ef4444;
+  background:#EF4444;
 
   color:white;
 
@@ -632,6 +634,35 @@ body{
 
 
 
+/* ================= Premium Hover ================= */
+
+
+button{
+
+  font-family:inherit;
+
+}
+
+
+
+button:hover{
+
+  box-shadow:
+
+  0 12px 30px rgba(16,185,129,.35);
+
+}
+
+
+
+h1,h2,h3{
+
+  letter-spacing:.3px;
+
+}
+
+
+
 /* ================= Responsive ================= */
 
 
@@ -645,6 +676,7 @@ body{
 }
 
 
+
 .nutrition-grid{
 
   grid-template-columns:1fr 1fr;
@@ -652,9 +684,50 @@ body{
 }
 
 
+
 .welcome-card h1{
 
   font-size:38px;
+
+}
+
+
+
+.app-card,
+.home-card,
+.scan-card,
+.product-card,
+.basket-card,
+.checkout-card{
+
+  padding:30px;
+
+}
+
+
+}
+
+
+
+@media(max-width:500px){
+
+
+.nutrition-grid{
+
+  grid-template-columns:1fr;
+
+}
+
+
+
+.app-container,
+.home-container,
+.scan-container,
+.product-container,
+.basket-container,
+.checkout-container{
+
+  padding:20px;
 
 }
 
