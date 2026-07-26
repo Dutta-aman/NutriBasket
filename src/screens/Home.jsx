@@ -56,26 +56,32 @@ function Home({
     <div className="home-container">
 
 
-      <div className="home-card">
-
-
-        <h1>
-          🛒 NutriBasket Dashboard
-        </h1>
-
-
-        <p className="dashboard-subtitle">
-          Smart shopping with real-time nutrition tracking
-        </p>
+      <div className="home-card premium-home">
 
 
 
+        <div className="dashboard-header">
 
-        <div className="session-box">
+          <h1>
+            🛒 NutriBasket
+          </h1>
+
+
+          <p>
+            Smart shopping with real-time nutrition tracking
+          </p>
+
+
+        </div>
+
+
+
+
+        <div className="session-box premium-session">
 
 
           <span>
-            🟢 Session Active
+            🟢 Active Shopping Session
           </span>
 
 
@@ -89,10 +95,12 @@ function Home({
 
 
 
+
         <div className="dashboard-grid">
 
 
-          <div className="dashboard-card">
+
+          <div className="dashboard-card nutrition-card">
 
             <div className="card-icon">
               🛍
@@ -103,7 +111,7 @@ function Home({
             </h2>
 
             <span>
-              Total Products
+              Products
             </span>
 
           </div>
@@ -112,7 +120,7 @@ function Home({
 
 
 
-          <div className="dashboard-card">
+          <div className="dashboard-card nutrition-card bill-card">
 
             <div className="card-icon">
               💰
@@ -132,7 +140,7 @@ function Home({
 
 
 
-          <div className="dashboard-card">
+          <div className="dashboard-card nutrition-card calorie-card">
 
             <div className="card-icon">
               🔥
@@ -152,14 +160,14 @@ function Home({
 
 
 
-          <div className="dashboard-card">
+          <div className="dashboard-card nutrition-card">
 
             <div className="card-icon">
               💪
             </div>
 
             <h2>
-              {totalProtein} g
+              {totalProtein}g
             </h2>
 
             <span>
@@ -172,14 +180,14 @@ function Home({
 
 
 
-          <div className="dashboard-card">
+          <div className="dashboard-card nutrition-card">
 
             <div className="card-icon">
               🌾
             </div>
 
             <h2>
-              {totalCarbs} g
+              {totalCarbs}g
             </h2>
 
             <span>
@@ -192,14 +200,14 @@ function Home({
 
 
 
-          <div className="dashboard-card">
+          <div className="dashboard-card nutrition-card">
 
             <div className="card-icon">
               🥑
             </div>
 
             <h2>
-              {totalFat} g
+              {totalFat}g
             </h2>
 
             <span>
@@ -209,14 +217,13 @@ function Home({
           </div>
 
 
-
         </div>
 
 
 
 
 
-        <div className="home-buttons">
+        <div className="home-buttons premium-buttons">
 
 
           <button
@@ -230,14 +237,16 @@ function Home({
 
 
 
+
           <button
             className="start-btn"
             onClick={onBasket}
           >
 
-            🧺 View Basket
+            🧺 My Basket
 
           </button>
+
 
 
 
@@ -256,7 +265,6 @@ function Home({
           </button>
 
 
-
         </div>
 
 
@@ -265,7 +273,6 @@ function Home({
 
 
     </div>
-
 
   );
 

@@ -42,41 +42,47 @@ function ProductInfo({
     <div className="product-container">
 
 
-      <div className="product-card">
+      <div className="product-card premium-product">
 
 
 
-        <div className="product-image">
+        <div className="product-hero">
 
-          🛒
+
+          <div className="product-image premium-product-icon">
+
+            🛒
+
+          </div>
+
+
+
+          <h1>
+
+            {product.name}
+
+          </h1>
+
+
+
+          <p className="brand premium-brand">
+
+            🏷 {product.brand}
+
+          </p>
+
 
         </div>
 
 
 
 
-        <h1>
-          {product.name}
-        </h1>
+
+        <div className="nutrition-grid premium-nutrition">
 
 
 
-
-        <p className="brand">
-
-          Brand: {product.brand}
-
-        </p>
-
-
-
-
-
-        <div className="nutrition-grid">
-
-
-
-          <div>
+          <div className="price-card">
 
             <h2>
               ₹{product.price}
@@ -91,10 +97,11 @@ function ProductInfo({
 
 
 
+
           <div>
 
             <h2>
-              {product.calories}
+              🔥 {product.calories}
             </h2>
 
             <span>
@@ -106,10 +113,11 @@ function ProductInfo({
 
 
 
+
           <div>
 
             <h2>
-              {product.protein}g
+              💪 {product.protein}g
             </h2>
 
             <span>
@@ -121,10 +129,11 @@ function ProductInfo({
 
 
 
+
           <div>
 
             <h2>
-              {product.carbs}g
+              🌾 {product.carbs}g
             </h2>
 
             <span>
@@ -136,10 +145,11 @@ function ProductInfo({
 
 
 
+
           <div>
 
             <h2>
-              {product.fat}g
+              🥑 {product.fat}g
             </h2>
 
             <span>
@@ -155,7 +165,9 @@ function ProductInfo({
 
 
 
-        <div className="product-buttons">
+
+        <div className="product-buttons premium-product-buttons">
+
 
 
           <button
@@ -166,15 +178,17 @@ function ProductInfo({
 
           >
 
-            ← Cancel
+            ← Back
 
           </button>
 
 
 
+
+
           <button
 
-            className="start-btn"
+            className="start-btn premium-btn"
 
             onClick={() => onAdd(product)}
 

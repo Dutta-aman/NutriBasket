@@ -9,7 +9,7 @@ function ScanProduct({ onProduct }) {
 
 
     const randomIndex = Math.floor(
-      Math.random()*products.length
+      Math.random() * products.length
     );
 
 
@@ -28,17 +28,37 @@ function ScanProduct({ onProduct }) {
     <div className="scan-container">
 
 
-      <div className="scan-card">
+      <div className="scan-card premium-scan">
 
 
-        <h1>
-          📷 Barcode Scanner
-        </h1>
+
+        <div className="scan-header">
 
 
-        <p>
-          Place the product barcode inside the scanner area.
-        </p>
+          <div className="scan-icon">
+
+            📷
+
+          </div>
+
+
+          <h1>
+
+            Product Scanner
+
+          </h1>
+
+
+          <p>
+
+            Scan your product barcode to view
+            price and nutrition information.
+
+          </p>
+
+
+        </div>
+
 
 
 
@@ -46,7 +66,16 @@ function ScanProduct({ onProduct }) {
         <div className="scanner-ui">
 
 
-          <div className="scanner-frame">
+          <div className="scanner-frame premium-scanner">
+
+
+            <div className="scan-corner top-left"></div>
+
+            <div className="scan-corner top-right"></div>
+
+            <div className="scan-corner bottom-left"></div>
+
+            <div className="scan-corner bottom-right"></div>
 
 
             <div className="scan-line"></div>
@@ -61,9 +90,18 @@ function ScanProduct({ onProduct }) {
 
 
 
-        <div className="scanner-status">
+        <div className="scanner-status premium-status">
 
-          🟢 Ready to Scan
+
+          <span>
+
+            🟢
+
+          </span>
+
+
+          Ready to Scan
+
 
         </div>
 
@@ -71,18 +109,27 @@ function ScanProduct({ onProduct }) {
 
 
 
+        <p className="scan-help">
+
+          Place barcode inside the frame
+
+        </p>
+
+
+
+
+
         <button
 
-          className="start-btn"
+          className="start-btn premium-btn"
 
           onClick={simulateScan}
 
         >
 
-          Scan Product
+          ⚡ Scan Product
 
         </button>
-
 
 
 
@@ -90,7 +137,6 @@ function ScanProduct({ onProduct }) {
 
 
     </div>
-
 
   );
 

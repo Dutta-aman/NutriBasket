@@ -17,7 +17,6 @@ function Welcome({ onStart }) {
 
       const now = new Date();
 
-
       setTime(
 
         now.toLocaleTimeString([], {
@@ -50,12 +49,19 @@ function Welcome({ onStart }) {
 
 
   const today = new Date().toLocaleDateString(
+
     "en-IN",
+
     {
+
       day:"numeric",
+
       month:"long",
+
       year:"numeric"
+
     }
+
   );
 
 
@@ -65,10 +71,10 @@ function Welcome({ onStart }) {
     <AppLayout>
 
 
-      <div className="welcome-card">
+      <div className="welcome-card premium-welcome">
 
 
-        <div className="brand-logo">
+        <div className="brand-logo animated-logo">
 
           🛒
 
@@ -78,7 +84,7 @@ function Welcome({ onStart }) {
 
         <h1>
 
-          NutriBasket
+          Nutri<span>Basket</span>
 
         </h1>
 
@@ -94,83 +100,124 @@ function Welcome({ onStart }) {
 
         <p className="welcome-text">
 
-          Scan products, track nutrition,
-          and enjoy a smarter shopping experience.
+          Experience smarter grocery shopping with
+          real-time product scanning, nutrition tracking,
+          and seamless checkout.
 
         </p>
 
 
 
 
-        <div className="feature-row">
+        <div className="feature-row premium-features">
 
 
-          <div>
+          <div className="feature-card">
 
-            ⚡
+            <strong>
+              ⚡
+            </strong>
 
             <span>
               Instant Scan
             </span>
 
+            <small>
+              Quick product detection
+            </small>
+
           </div>
 
 
 
-          <div>
+          <div className="feature-card">
 
-            🥗
+            <strong>
+              🥗
+            </strong>
 
             <span>
               Nutrition Info
             </span>
 
+            <small>
+              Track calories & nutrients
+            </small>
+
+          </div>
+
+
+
+          <div className="feature-card">
+
+            <strong>
+              💳
+            </strong>
+
+            <span>
+              Easy Checkout
+            </span>
+
+            <small>
+              Fast digital payment
+            </small>
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div className="store-info premium-info">
+
+
+          <div>
+
+            🏪
+
+            <p>
+              FreshMart Store
+            </p>
+
           </div>
 
 
 
           <div>
 
-            💳
+            📅
 
-            <span>
-              Easy Checkout
-            </span>
+            <p>
+              {today}
+            </p>
+
+          </div>
+
+
+
+          <div>
+
+            🕒
+
+            <p>
+              {time}
+            </p>
 
           </div>
 
 
         </div>
 
-
-
-
-        <div className="store-info">
-
-
-          <span>
-            🏪 FreshMart Store
-          </span>
-
-
-          <span>
-            📅 {today}
-          </span>
-
-
-          <span>
-            🕒 {time}
-          </span>
-
-
-        </div>
 
 
 
 
         <button
 
-          className="start-btn"
+          className="start-btn premium-btn"
 
           onClick={onStart}
 
