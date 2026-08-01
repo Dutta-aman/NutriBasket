@@ -1,6 +1,4 @@
 ![NutriBasket Banner](assets/banner.svg)
-# THIS IS A FORK PROJECT FROM NutriBasket REPO
-Readme will be updated
 ----------------------------------------------------
 # React + Vite
 
